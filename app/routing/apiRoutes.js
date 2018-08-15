@@ -21,23 +21,30 @@ module.exports = function(app){
 
         console.log(userScores);
 
-        var totalDifference = 0;
+        var totalDifference;
 
         for (var i = 0; i < friends.length; i++){
 
-            console.log(friends[i]);
+            //console.log(friends[i]);
             totalDifference = 0;
 
-            for (var j = 0; j < friends[i].scores[j]; j++){
+            for (var j = 0; j < friends[i].scores.length; j++){
+
+                console.log(friends[i].name);
+                console.log(friends[i].scores[j]);
 
                 totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friends[i].scores[j]));
+                
+                //console.log(totalDifference);
 
-                if (totalDifference <= bestMatch.friendDifference){
+            }
 
-                    bestMatch.name = friends[i].name;
-                    bestMatch.photo = friends[i].photo;
-                    bestMatch.friendDifference = totalDifference;
-                }
+            if (totalDifference <= bestMatch.friendDifference){
+
+                bestMatch.name = friends[i].name;
+                bestMatch.photo = friends[i].photo;
+                bestMatch.friendDifference = totalDifference;
+                console.log(bestMatch.friendDifference);
             }
         }
 
